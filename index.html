@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Template</title>
+        <meta name="description" content="Page Titile">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="estilo.css">
+        <!-- Call App Mode on ios devices -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- Remove Tap Highlight on Windows Phone IE -->
+        <meta name="msapplication-tap-highlight" content="no">
+        <!-- base css -->
+        <!-- Place favicon.ico in the root directory -->
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <div class="container" style="background-color: #6d6d6d">
+            <div class="row">
+                <div id="puesto1"></div>
+                <div id="puesto2"></div>
+                <div class="col-12" style="margin:1% 0"></div>
+                <div id="puesto3"></div>
+                <div id="puesto4"></div>
+
+            </div>
+        </div>
+        <script src="mesa.js"></script>
+        <script>
+            var puesto1,puesto2,puesto3,puesto4;
+
+            $(document).ready(function(){
+                //Puesto 1
+                puesto1 = new mesa("B1","test2","#puesto1");
+                puesto1.inventario();
+                puesto1.init();
+                puesto1.bgcolor("#e3802c");
+                puesto1.rotate();
+
+                //Puesto 2
+                puesto2 = new mesa("B2","test2","#puesto2");
+                puesto2.inventario();
+                puesto2.init();
+                puesto2.bgcolor("#7463db");
+                puesto2.rotate();
+
+                //Puesto 3
+                puesto3 = new mesa("B3","test2","#puesto3");
+                puesto3.inventario();
+                puesto3.init();
+                puesto3.bgcolor("#7463db");
+
+                //Puesto 4
+                puesto4 = new mesa("B4","test2","#puesto4");
+                puesto4.inventario();
+                puesto4.init();
+                puesto4.bgcolor("#e3802c");
+            });
+        </script>
+
+    </body>
+</html>
