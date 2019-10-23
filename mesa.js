@@ -52,12 +52,13 @@ mesa.prototype.init = function(){
         entradas += "<div class='col-12 center'><button class='btn btn-outline-primary btn-block mybutton'> "+indice+" </button></div>";
     });
 
-    $(this.contenedor).empty().addClass("col-md-6 main-container").append("<div class='mascarade'><h2 class='puesto'>"+this.usuario+"</h2><span class='mensaje'>Bienvenido</span></div>").append("<div id='"+this.contenedor.substring(1,this.contenedor.length)+"-bg' class='row mesa-bg'>");
+    $(this.contenedor).empty().addClass("col-md-6 main-container").append("<div class='mascarade'><span class='reloj'></span><h2 class='puesto'>"+this.usuario+"</h2><span class='mensaje'>Bienvenido</span></div>").append("<div id='"+this.contenedor.substring(1,this.contenedor.length)+"-bg' class='row mesa-bg'>");
     $(this.contenedor).children("#"+this.contenedor.substring(1,this.contenedor.length)+"-bg").append(entradas).append("</div>");
     $(this.contenedor+" .mascarade").click(function () {
         console.log("click");
         $(this).slideToggle();
-    })
+    });
+    loadingTimer = setInterval(function(){element.startTime(element);}, 1000);
 };
 
 mesa.prototype.bgcolor = function(color){
@@ -67,6 +68,23 @@ mesa.prototype.bgcolor = function(color){
 mesa.prototype.rotate = function(){
   $(this.contenedor).css("transform", "rotate(180deg)").css("transform-origin"," 50% 54%");
 };
+mesa.prototype.startTime = function(element){
+
+    console.log(element);
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+
+    m = element.checkTime(m);
+    s = element.checkTime(s);
+    $(element.contenedor+" .reloj").empty().append(h + ":" + m + ":" + s);
+    console.log("hey");
+}
+mesa.prototype.checkTime = function(i){
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
 
 
 

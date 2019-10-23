@@ -110,3 +110,13 @@ hr{
     color: floralwhite;
     font-family: Helvetica;
 }
+
+.reloj{
+    position:absolute;
+    display: block;
+    top: 0.5em;
+    left: 0.5em;
+    font-size: 4vh;
+    color: floralwhite;
+    font-family: Helvetica;
+}
