@@ -29,6 +29,9 @@ mesa.prototype.init = function(){
     $(this.contenedor+"-card").click(function(){
         element.principal(element);
     });
+    $(this.contenedor+"-bell").click(function(){
+        element.chairAlert(element);
+    });
 };
 
 mesa.prototype.idle = function(element){
@@ -64,7 +67,14 @@ mesa.prototype.principal = function(element){
 }
 
 mesa.prototype.initHelper = function(element){
-    $(element.contenedor+"-helper").children().append("<div class='col-md-12 center no-padding'><button class='btn btn-outline-primary btn-block mybutton'><i class='fa fa-bell fa-2x'></i></button></div><div class='col-md-12 center no-padding'><button id='"+element.contenedor.substring(1,this.contenedor.length)+"-card' class='btn btn-outline-primary btn-block mybutton'><i class='fa fa-bars fa-2x'></i></button></div> <div class='col-md-12 center no-padding'><button class='btn btn-outline-primary btn-block mybutton'><i class='fa fa-list-alt fa-2x'></i></button></div>");
+    $(element.contenedor+"-helper").children().append("<div class='col-md-12 center no-padding'><button id='"+element.contenedor.substring(1,this.contenedor.length)+"-bell' class='btn btn-outline-primary btn-block mybutton'><i class='fa fa-bell fa-2x'></i></button></div><div class='col-md-12 center no-padding'><button id='"+element.contenedor.substring(1,this.contenedor.length)+"-card' class='btn btn-outline-primary btn-block mybutton'><i class='fa fa-bars fa-2x'></i></button></div> <div class='col-md-12 center no-padding'><button class='btn btn-outline-primary btn-block mybutton'><i class='fa fa-list-alt fa-2x'></i></button></div>");
+};
+
+mesa.prototype.chairAlert = function(element){
+    $(element.contenedor+"-bell").children().css("color","red").addClass("bounce");
+    setTimeout(function(){
+        $(element.contenedor+"-bell").children().css("color","floralwhite").removeClass("bounce");
+    },5000);
 };
 
 //Things ready
