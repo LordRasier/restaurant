@@ -22,7 +22,7 @@ mesa.prototype.init = function(){
 
 
     loadingTimer = setInterval(function(){element.startTime(element);}, 1000);
-    //idleTimer = setInterval(function(){element.idle(element);}, 1000);
+    idleTimer = setInterval(function(){element.idle(element);}, 1000);
     helper = this.initHelper(element);
     this.principal(element);
 
