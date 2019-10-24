@@ -57,11 +57,8 @@ mesa.prototype.principal = function(element){
         menu += "<div  class='col-12 center no-padding'><button id='"+element.contenedor.substring(1,element.contenedor.length)+"-"+indice+"' class='btn btn-outline-primary btn-block mybutton'> "+indice+" </button></div>";
 
     });
-    console.log(element);
-
     $(element.contenedor+" .menu-container").empty().append(menu);
     $(element.contenedor+"-ENTRADAS").click(function(){
-        console.log("hola");
         element.entradas(element);
     });
 }
