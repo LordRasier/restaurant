@@ -4,6 +4,7 @@ function mesa(usuario,pass,contenedor) {
     this.contenedor = contenedor;
     this.idleTime = 60;
     this.opciones = [];
+    this.lista = [];
 };
 
 mesa.prototype.init = function(){
@@ -22,7 +23,7 @@ mesa.prototype.init = function(){
 
 
     loadingTimer = setInterval(function(){element.startTime(element);}, 1000);
-    idleTimer = setInterval(function(){element.idle(element);}, 1000);
+    //idleTimer = setInterval(function(){element.idle(element);}, 1000);
     helper = this.initHelper(element);
     this.principal(element);
 
@@ -48,9 +49,68 @@ mesa.prototype.entradas = function(element){
     menu = "";
 
     $.each(element.opciones["ENTRADAS"],function (indice,valor) {
-        menu += "<div class='col-md-12'><a class='btn btn-outline-primary mybutton btn-block'><div class='row'><div class='plato-img col-md-4'><img src='paris.jpg'></div> <div class='plato-container col-md-8'><h2 class='plato-title'>"+indice+"</h2><p class='plato-description'>"+valor["DESCRIPCION"]+"</p><span class='plato-price'>Valor: $"+valor["PRECIO"].toFixed(2)+"</span></div></div> </a></div>";
+        menu += "<div class='col-md-12 no-padding'><a class='btn btn-outline-primary mybutton btn-block'><div class='row'><div class='plato-img col-md-4'><img src='paris.jpg'></div> <div class='plato-container col-md-8'><h2 class='plato-title'>"+indice+"</h2><p class='plato-description'>"+valor["DESCRIPCION"]+"</p><span class='plato-price'>Valor: $"+valor["PRECIO"].toFixed(2)+"</span></div></div> </a></div>";
     });
     $(element.contenedor+" .menu-container").empty().append(menu);
+};
+
+mesa.prototype.ensaladas = function(element){
+    menu = "";
+
+    $.each(element.opciones["ENSALADAS"],function (indice,valor) {
+        menu += "<div data-clasificacion='ENSALADAS' data-plato='"+indice+"' class='col-md-12 no-padding ingredientes'>" +
+            "<a class='btn btn-outline-primary mybutton btn-block'>" +
+            "   <div class='row'>" +
+            "       <div class='plato-img col-md-4'>  " +
+            "           <img src='paris.jpg'>" +
+            "       </div> " +
+            "       <div class='plato-container col-md-7'>" +
+            "           <h2 class='plato-title'>"+indice+"</h2>" +
+            "           <p class='plato-description'>"+valor["DESCRIPCION"]+"</p>" +
+            "       </div>" +
+            "       <div class='col-md-1'>" +
+            "           <button class='btn btn-outline-primary mybutton'>" +
+            "               <span class='button-companion'>Ingredientes</span>"+
+            "               <i class='fa fa-chevron-right'></i>" +
+            "           </button>" +
+            "       </div> " +
+            "   </div> " +
+            "</a>" +
+            "</div>";
+    });
+    $(element.contenedor+" .menu-container").empty().append(menu);
+    $(".ingredientes").click(function(){
+        ingredientes = "";
+        $.each(element.opciones[$(this).data("clasificacion")][$(this).data("plato")]["INGREDIENTE"],function(indice,valor){
+            ingredientes += "<div class='col-md-6'><button class='btn btn-outline-primary mybutton btn-block align-left ingrediente'>"+valor["DESCRIPCION"]+" - $"+valor["PRECIO"].toFixed(2)+"</button></div>";
+        });
+        detalle = " <div class='col-md-12 no-padding'>" +
+            "           <div class='row'>" +
+                            "<div class='col-md-1'>" +
+                             " <button class='btn btn-outline-primary mybutton'>" +
+                "               <span class='button-companion'>Ingredientes</span>"+
+                "               <i class='fa fa-chevron-left'></i>" +
+                "           </button>" +
+                            "</div>"+
+                            "<div class='plato-img col-md-4'>  " +
+                "               <img src='paris.jpg'>" +
+                    "        </div> " +
+                            "<div class='col-md-7' style='padding: 2%'>" +
+                                "<div class='row'>" +
+            "                       <h4 class='detail-title'>"+element.opciones[$(this).data("clasificacion")][$(this).data("plato")]["TITULO"]+"</h4>" +
+            "                       <p class='plato-description'>"+element.opciones[$(this).data("clasificacion")][$(this).data("plato")]["DESCRIPCION"]+"</p>" +
+            "                   </div>"+
+            "                </div>"+
+            "           </div>" +
+                        "<div class='row'>" +
+                            "<div class='col-md-12'><h2 class='warning-label'>Desmarque los ingredientes que NO desee</h2></div>"+
+                                ingredientes+
+                            "</div>"+
+                        "</div>"+
+                    "</div>";
+        $(element.contenedor+" .menu-container").empty().append(detalle);
+    });
+
 };
 
 mesa.prototype.principal = function(element){
@@ -63,6 +123,9 @@ mesa.prototype.principal = function(element){
     $(element.contenedor+" .menu-container").empty().append(menu);
     $(element.contenedor+"-ENTRADAS").click(function(){
         element.entradas(element);
+    });
+    $(element.contenedor+"-ENSALADAS").click(function(){
+        element.ensaladas(element);
     });
 }
 
@@ -182,62 +245,114 @@ mesa.prototype.inventario = function(){
         },
         "ENSALADAS" : {
             "CESAR DE POLLO" : {
+                "TITULO" : "CESAR DE POLLO",
+                "DESCRIPCION" : "Una ensalada con muchas cosas",
                 "INGREDIENTE" : {
+                    0: {
+                        "ID": 7,
+                        "DESCRIPCION": "MIX DE LECHUGAS",
+                        "PRECIO": 3.00
+                    },
+                    1: {
+                        "ID": 8,
+                        "DESCRIPCION": "PECHUGA DE POLLO A LA PLANCHA",
+                        "PRECIO": 3.00
+                    },
+                    2: {
+                        "ID": 9,
+                        "DESCRIPCION": "TOCINETA CRUJIENTE",
+                        "PRECIO": 3.00
+                    },
+                    3: {
+                        "ID": 10,
+                        "DESCRIPCION": "CROUTONES",
+                        "PRECIO": 3.00
+                    },
+                    4: {
+                        "ID": 11,
+                        "DESCRIPCION": "MIX DE LECHUGAS",
+                        "PRECIO": 3.00
+                    },
+                    5: {
+                        "ID": 12,
+                        "DESCRIPCION": "QUESO PARMESANO",
+                        "PRECIO": 3.00
+                    },
+                    6: {
+                        "ID": 13,
+                        "DESCRIPCION": "ADEREZO CESAR",
+                        "PRECIO": 3.00
+                    }
+                }
+            },
+            "CAPRESA" : {
+                "TITULO" : "CAPRESA",
+                "DESCRIPCION" : "Una ensalada con muchas cosas",
+                "INGREDIENTES" : {
                     0 : {
-                        "ID" : 7,
-                        "DESCRIPCION" : "MIX DE LECHUGAS",
+                        "ID" : 14,
+                        "DESCRIPCION" : "TOMATE EN RODAJAS",
                         "PRECIO" : 3.00
                     },
                     1 : {
-                        "ID" : 8,
+                        "ID" : 15,
+                        "DESCRIPCION" : "QUESO MOZZARELA",
+                        "PRECIO" : 3.00
+                    },
+                    2 : {
+                        "ID" : 16,
+                        "DESCRIPCION" : "PESTO",
+                        "PRECIO" : 3.00
+                    }
+                }
+
+            },
+            "NEO SALDAD" : {
+                "TITULO" : "NEO SALDAD",
+                "DESCRIPCION" : "Una ensalada con muchas cosas",
+                "INGREDIENTES" : {
+                    0 : {
+                        "ID" : 19,
+                        "DESCRIPCION" : "MIX DE LECHUGA",
+                        "PRECIO" : 3.00
+                    },
+                    1 : {
+                        "ID" : 20,
                         "DESCRIPCION" : "PECHUGA DE POLLO A LA PLANCHA",
                         "PRECIO" : 3.00
                     },
                     2 : {
-                        "ID" : 9,
-                        "DESCRIPCION" : "TOCINETA CRUJIENTE",
+                        "ID" : 21,
+                        "DESCRIPCION" : "QUESO AMARILLO",
                         "PRECIO" : 3.00
                     },
                     3 : {
-                        "ID" : 10,
-                        "DESCRIPCION" : "CROUTONES",
+                        "ID" : 22,
+                        "DESCRIPCION" : "JAMON DE PAVO",
                         "PRECIO" : 3.00
                     },
                     4 : {
-                        "ID" : 11,
-                        "DESCRIPCION" : "MIX DE LECHUGAS",
+                        "ID" : 23,
+                        "DESCRIPCION" : "TOCINETA CRUJIENTE",
                         "PRECIO" : 3.00
                     },
                     5 : {
-                        "ID" : 12,
-                        "DESCRIPCION" : "QUESO PARMESANO",
+                        "ID" : 24,
+                        "DESCRIPCION" : "PIMIENTO ASADO",
                         "PRECIO" : 3.00
                     },
                     6 : {
-                        "ID" : 13,
-                        "DESCRIPCION" : "ADEREZO CESAR",
+                        "ID" : 25,
+                        "DESCRIPCION" : "AGUACATE",
+                        "PRECIO" : 3.00
+                    },
+                    7 : {
+                        "ID" : 26,
+                        "DESCRIPCION" : "ADEREZO NEO",
                         "PRECIO" : 3.00
                     }
-                },
-                "CAPRESA" : {
-                    "INGREDIENTES" : {
-                        0 : {
-                            "ID" : 14,
-                            "DESCRIPCION" : "TOMATE EN RODAJAS",
-                            "PRECIO" : 3.00
-                        },
-                        1 : {
-                            "ID" : 15,
-                            "DESCRIPCION" : "QUESO MOZZARELA",
-                            "PRECIO" : 3.00
-                        },
-                        2 : {
-                            "ID" : 16,
-                            "DESCRIPCION" : "PESTO",
-                            "PRECIO" : 3.00
-                        }
-                    }
                 }
+
             }
         },
         "CAFE" : {
