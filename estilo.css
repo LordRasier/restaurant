@@ -8,6 +8,10 @@
     overflow-y: hidden;
 }
 
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .plato-title{
     font-size: 1.7em;
     text-align: left;
@@ -83,12 +87,13 @@
     height: 100%;
     color: floralwhite;
     border-color: transparent;
-
+    text-shadow: 0px 0px 2px;
 }
 
 .mybutton:focus{
     outline:0 !important;
     box-shadow: none !important;
+
 }
 
 hr{
@@ -140,17 +145,15 @@ hr{
     font-size: 10vh;
     color: floralwhite;
     font-weight: 100;
-    font-family: Helvetica;
 }
 
 .mensaje{
     position:absolute;
     display: block;
     top: 32%;
-    right: 25%;
+    right: 18%;
     font-size: 10vh;
     color: floralwhite;
-    font-family: Helvetica;
 }
 
 .reloj{
@@ -160,7 +163,6 @@ hr{
     left: 0.5em;
     font-size: 4vh;
     color: floralwhite;
-    font-family: Helvetica;
 }
 
 .no-padding{
@@ -175,6 +177,8 @@ hr{
     -webkit-animation: bounce 0.5s infinite linear;
     animation: bounce 0.5s infinite linear;
     colr:000;
+    text-shadow: 1px 1px 10px;
+
 }
 @-webkit-keyframes bounce {
     0% { top: 0; }

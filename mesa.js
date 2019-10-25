@@ -2,7 +2,7 @@ function mesa(usuario,pass,contenedor) {
     this.usuario = usuario;
     this.pass = pass;
     this.contenedor = contenedor;
-    this.idleTime = 20;
+    this.idleTime = 60;
     this.opciones = [];
 };
 
@@ -18,7 +18,7 @@ mesa.prototype.init = function(){
     $(this.contenedor+"-menu").append("<div class='row menu-container'></div>");
 
     $(this.contenedor+" .mascarade").click(function () {$(this).slideToggle();element.idleTime = 20;});
-    $(this.contenedor).click(function(){element.idleTime = 7;});
+    $(this.contenedor).click(function(){element.idleTime = 60;});
 
 
     loadingTimer = setInterval(function(){element.startTime(element);}, 1000);
