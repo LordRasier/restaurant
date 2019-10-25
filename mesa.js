@@ -87,10 +87,9 @@ mesa.prototype.ensaladas = function(element){
         detalle = " <div class='col-md-12 no-padding'>" +
             "           <div class='row'>" +
                             "<div class='col-md-1'>" +
-                             " <button class='btn btn-outline-primary mybutton'>" +
-                "               <span class='button-companion'>Ingredientes</span>"+
-                "               <i class='fa fa-chevron-left'></i>" +
-                "           </button>" +
+                             " <button id='"+element.contenedor.substring(1,element.contenedor.length)+"-ensalada' class='btn btn-outline-primary mybutton'>" +
+                    "               <i class='fa fa-chevron-left'></i>" +
+                "               </button>" +
                             "</div>"+
                             "<div class='plato-img col-md-4'>  " +
                 "               <img src='paris.jpg'>" +
@@ -107,8 +106,14 @@ mesa.prototype.ensaladas = function(element){
                                 ingredientes+
                             "</div>"+
                         "</div>"+
-                    "</div>";
+
+                                 "<div class='col-md-12'>" +
+                                    "<button class='btn btn-outline-primary mybutton btn-block'>Agregar</button>"+
+                                "</div>"+
+
+                        "</div>";
         $(element.contenedor+" .menu-container").empty().append(detalle);
+        $(element.contenedor+"-ensalada").click(function(){element.ensaladas(element)});
     });
 
 };
