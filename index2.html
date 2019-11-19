@@ -48,8 +48,11 @@
                         <div class="col-md-10">
                             <div class="row">
                                 <div class="col-md-9 detail">
-                                        <h1 class="food-title">Lorem ipsum dolor sit amet.</h1>
-                                        <p class="food-description"></p>
+                                    <h1 class="food-title">Lorem ipsum dolor sit amet.</h1>
+                                    <p class="food-description"></p>
+                                    <div class="row spe">
+                                            
+                                    </div>
                                 </div>
                             </div>
                             
@@ -57,13 +60,13 @@
                                 <label class="form-label scroll-title">Ensaladas</label>
                                 <ul class="no-style scroll-ul">
                                     <li>
-                                        <a data-image="hamburguesa.jpg" data-title="Lorem ipsum dolor sit amet." data-description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla condimentum condimentum. Quisque iaculis dolor a neque aliquam, quis suscipit nunc mattis. In velit leo, egestas quis sagittis fermentum, tempus nec massa. Nam posuere nisl at sem finibus, ut ultricies risus imperdiet." href="#" class="btn btn-outline-rimary preview">Prueba</a>
+                                        <a data-id="1" data-image="hamburguesa.jpg" data-title="Lorem ipsum dolor sit amet." data-description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla condimentum condimentum. Quisque iaculis dolor a neque aliquam, quis suscipit nunc mattis. In velit leo, egestas quis sagittis fermentum, tempus nec massa. Nam posuere nisl at sem finibus, ut ultricies risus imperdiet." href="#" class="btn btn-outline-rimary preview">Prueba</a>
                                     </li>
                                     <li>
-                                        <a data-image="pollo.jpg" data-title="Lorem amet ipsum  sit amet." data-description="Quisque iaculis turpis vitae elementum dapibus. Ut at suscipit nibh. Nam auctor, sem vel imperdiet vehicula, ipsum ligula molestie turpis," href="#" class="btn btn-outline-rimary preview">Prueba</a>
+                                        <a data-id="2" data-image="pollo.jpg" data-title="Lorem amet ipsum  sit amet." data-description="Quisque iaculis turpis vitae elementum dapibus. Ut at suscipit nibh. Nam auctor, sem vel imperdiet vehicula, ipsum ligula molestie turpis," href="#" class="btn btn-outline-rimary preview">Prueba</a>
                                     </li>
                                     <li>
-                                        <a data-image="carne.jpg" data-title="Dolor ipsum dolor amet sit." data-description="Suspendisse lacus odio, volutpat sit amet risus quis, vestibulum mattis velit. Curabitur malesuada id neque eget fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed venenatis dolor ac ante porttitor lobortis. Aliquam erat volutpat." href="#" class="btn btn-outline-rimary preview">Prueba</a>
+                                        <a data-id="3" data-image="carne.jpg" data-title="Dolor ipsum dolor amet sit." data-description="Suspendisse lacus odio, volutpat sit amet risus quis, vestibulum mattis velit. Curabitur malesuada id neque eget fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed venenatis dolor ac ante porttitor lobortis. Aliquam erat volutpat." href="#" class="btn btn-outline-rimary preview">Prueba</a>
                                     </li>
                                     <li>
                                         <a href="#" class="btn btn-outline-rimary">Prueba</a>
@@ -104,6 +107,30 @@
         </div>
         <script src="mesa.js"></script>
         <script>
+
+            var platos = {
+                1 : {
+                    1 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    2 : "Aenean quis purus gravida, eleifend odio in, egestas mauris.",
+                    3 : "Sed iaculis felis eget eros luctus, non venenatis tellus tempor.",
+                    4 : "Sed fringilla ex non felis tempus hendrerit.",
+                    5 : "Morbi vel urna dignissim orci rutrum fermentum."
+                },
+                2 : {
+                    1 : "Lorem ipsum dolor sit amet",
+                    2 : "Gravida, eleifend odio in, egestas mauris.",
+                    3 : "Sed iaculis felis, non venenatis tellus tempor.",
+                    4 : "Sed fringilla ex non felis tempus .",
+                    5 : "Morbi vel urna dignissim orci rutrum fermentum."
+                },
+                3 : {
+                    1 : "Lorem ipsum dolor sit amet, consectetur ",
+                    2 : "Aenean quis gravida, eleifend odio in, egestas mauris.",
+                    3 : "Sed iaculis felis, non venenatis tellus tempor.",
+                    4 : "Sed fringilla ex non .",
+                    5 : "Morbi vel urna dignissim orci rutrum."
+                },
+            };
             $(document).ready(function(){
                 $(".preview").click(function(){
                     console.log($(this).data("image"));
@@ -111,6 +138,11 @@
                     $("#backer").css("background-image","url('"+$(this).data("image")+"')");
                     $(".food-description").text($(this).data("description"));
                     $(".food-title").text($(this).data("title"));
+                    $(".spe").empty()
+                    $(".spe").append("<div class='col-md-12'><hr class='separator'></hr></div>")
+                    $.each(platos[$(this).data("id")],function(indice,valor){
+                        $(".spe").append("<div class='col-md-6'><button class='check btn btn-outline-primary'>"+valor+"</button></div>");
+                    });
                 });
             });
             
