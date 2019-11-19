@@ -10,6 +10,59 @@
 
 *{
     font-family: 'Montserrat', sans-serif;
+    //border: 1px solid black;
+}
+
+#backer{
+    background-size: cover;
+    background-position: center;
+    -webkit-transition: background-image 0.2s ease-in-out;
+transition: background-image 0.2s ease-in-out;
+}
+
+
+.scroll-menu{
+    position: absolute;
+    width: 33%;
+    height: -webkit-fill-available;
+    right: 0;
+    top:0;
+    overflow-y: auto;
+    background: rgb(2,0,36);
+    background: linear-gradient(280deg, rgba(2,0,36,1) 14%, rgba(255,255,255,0) 91%);
+}
+
+.scroll-title{
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    padding: 4% 0%;
+    text-shadow: 0px 0px 3px floralwhite;
+    font-size: 1.1em;
+    color: white;
+}
+
+.scroll-ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    
+}
+.scroll-ul li{
+    text-align:center;
+    padding: 0% 0%;
+}
+
+.scroll-ul li a{
+    text-shadow: 0px 0px 3px floralwhite;
+    font-size: 1.1em;
+    color: white;
+    width: 100%;
+}
+
+.scroll-ul li a:hover{
+    text-shadow: 0px 0px 3px floralwhite;
+    color: blue;
 }
 
 .plato-title{
@@ -83,6 +136,8 @@
 
 .helper-container{
     height: -webkit-fill-available;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,0) 90%);
 }
 
 .mascarade{
@@ -132,7 +187,7 @@ hr{
     z-index: 99999;
 }
 .rippleEffect {
-    animation: rippleDrop .6s linear;
+    animation: rippleDrop .3s linear;
 }
 
 @keyframes rippleDrop {

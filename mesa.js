@@ -293,7 +293,7 @@ mesa.prototype.inventario = function(){
             "CAPRESA" : {
                 "TITULO" : "CAPRESA",
                 "DESCRIPCION" : "Una ensalada con muchas cosas",
-                "INGREDIENTES" : {
+                "INGREDIENTE" : {
                     0 : {
                         "ID" : 14,
                         "DESCRIPCION" : "TOMATE EN RODAJAS",
@@ -315,7 +315,7 @@ mesa.prototype.inventario = function(){
             "NEO SALDAD" : {
                 "TITULO" : "NEO SALDAD",
                 "DESCRIPCION" : "Una ensalada con muchas cosas",
-                "INGREDIENTES" : {
+                "INGREDIENTE" : {
                     0 : {
                         "ID" : 19,
                         "DESCRIPCION" : "MIX DE LECHUGA",
