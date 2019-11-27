@@ -133,7 +133,6 @@
             };
             $(document).ready(function(){
                 $(".preview").click(function(){
-                    console.log($(this).data("image"));
                     $("#backer").css("transition","background-image 0.2s ease-in-out;");
                     $("#backer").css("background-image","url('"+$(this).data("image")+"')");
                     $(".food-description").text($(this).data("description"));
@@ -141,11 +140,17 @@
                     $(".spe").empty()
                     $(".spe").append("<div class='col-md-12'><hr class='separator'></hr></div>")
                     $.each(platos[$(this).data("id")],function(indice,valor){
-                        $(".spe").append("<div class='col-md-6'><button class='check btn btn-outline-primary'>"+valor+"</button></div>");
+                        $(".spe").append(function(){
+                            return $("<div class='col-md-6'><button onclick='handler(this)' class='check btn btn-outline-primary'>"+valor+"</button></div>");
+                        });
                     });
                 });
+                
+                
             });
-            
+            function handler(e){
+                 
+            }
         </script>
 
     </body>

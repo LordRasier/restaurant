@@ -1,10 +1,17 @@
+@font-face {
+    font-family: moon;
+    src: url(MoonLight.otf);
+  }
+
 .container{
-    background-image: url("paris.jpg");
+    
     background-size: cover;
     width: 100%;
     height: 100vh;
     max-width: inherit;
     padding: 1%;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 10%, rgba(255,255,255,0) 100%);
     overflow-y: hidden;
 }
 
@@ -13,11 +20,20 @@
     //border: 1px solid black;
 }
 
-#backer{
+.backer{
     background-size: cover;
     background-position: center;
     -webkit-transition: background-image 0.2s ease-in-out;
-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
+    background-image: url("fondo2.png");
+    box-shadow: 0px 0px 20px white !important;
+}
+
+.confirm-row{
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+    padding: 2%;
 }
 
 
@@ -82,6 +98,8 @@ transition: background-image 0.2s ease-in-out;
     font-size: 1.5em;
     color: white;
     width: 100%;
+    padding: 3% 0 2% 0%;
+    border-bottom: 1px solid white;
 }
 
 .food-description{
@@ -95,6 +113,10 @@ transition: background-image 0.2s ease-in-out;
     padding: 5% 0 0 0;
 }
 
+.confirm-button{
+    width:100%;
+    text-align:center;
+}
 .plato-title{
     font-size: 1.7em;
     text-align: left;
@@ -174,12 +196,14 @@ transition: background-image 0.2s ease-in-out;
     height: inherit;
     width: 96%;
     z-index: 9999;
-    background-color: coral;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 47%, rgba(255,255,255,0) 100%);
     display: flex;
     position: absolute;
     box-sizing: border-box;
     right: 2%;
-    border-radius: 10px
+    border-radius: 10px;
+    top: 4.4%;
 }
 
 .mybutton{
@@ -187,6 +211,11 @@ transition: background-image 0.2s ease-in-out;
     color: floralwhite;
     border-color: transparent;
     text-shadow: 0px 0px 2px;
+}
+
+.mybutton:hover{
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .mybutton:focus{
@@ -261,6 +290,8 @@ hr{
     font-size: 10vh;
     color: floralwhite;
     font-weight: 100;
+    text-shadow: 0px 0px 30px whitesmoke;
+    font-family: moon !important;
 }
 
 .mensaje{
@@ -270,6 +301,8 @@ hr{
     right: 18%;
     font-size: 10vh;
     color: floralwhite;
+    text-shadow: 0px 0px 30px whitesmoke;
+    font-family: moon !important;
 }
 
 .reloj{
@@ -279,6 +312,8 @@ hr{
     left: 0.5em;
     font-size: 4vh;
     color: floralwhite;
+    text-shadow: 0px 0px 30px whitesmoke;
+    font-family: moon !important;
 }
 
 .no-padding{
